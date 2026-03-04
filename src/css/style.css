@@ -1,0 +1,259 @@
+.collapse-content-wrapper {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease-out;
+    /* Плавная анимация высоты */
+}
+
+.liker-widget {
+    position: relative;
+    margin-top: 50px;
+    display: inline-block;
+}
+
+.like-btn {
+    padding: 10px 30px;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.like-btn:active {
+    transform: scale(0.95);
+}
+
+/* Базовый стиль для сердечка */
+.heart {
+    position: absolute;
+    top: 0;
+    /* Будет вылетать из центра кнопки */
+    left: 50%;
+    margin-left: -12px;
+    /* Центрируем по горизонтали */
+    font-size: 24px;
+    color: #e74c3c;
+    pointer-events: none;
+    /* Чтобы не перекрывало клики по кнопке */
+    opacity: 1;
+}
+
+/* 4 траектории полета (по заданию) */
+@keyframes trajectory-1 {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+
+    25% {
+        transform: translate(-50px, -50px);
+    }
+
+    50% {
+        transform: translate(0, -100px);
+    }
+
+    75% {
+        transform: translate(50px, -150px);
+    }
+
+    100% {
+        transform: translate(0, -200px);
+        opacity: 0;
+    }
+}
+
+@keyframes trajectory-2 {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+
+    25% {
+        transform: translate(0, -50px);
+    }
+
+    50% {
+        transform: translate(50px, -100px);
+    }
+
+    75% {
+        transform: translate(-50px, -150px);
+    }
+
+    100% {
+        transform: translate(0, -200px);
+        opacity: 0;
+    }
+}
+
+@keyframes trajectory-3 {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+
+    25% {
+        transform: translate(0, -50px);
+    }
+
+    50% {
+        transform: translate(-50px, -100px);
+    }
+
+    75% {
+        transform: translate(50px, -150px);
+    }
+
+    100% {
+        transform: translate(0, -200px);
+        opacity: 0;
+    }
+}
+
+@keyframes trajectory-4 {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+
+    25% {
+        transform: translate(50px, -50px);
+    }
+
+    50% {
+        transform: translate(0, -100px);
+    }
+
+    75% {
+        transform: translate(-50px, -150px);
+    }
+
+    100% {
+        transform: translate(0, -200px);
+        opacity: 0;
+    }
+}
+
+/* Классы для JS */
+.heart-anim-1 {
+    animation: trajectory-1 0.5s ease-out forwards;
+}
+
+.heart-anim-2 {
+    animation: trajectory-2 0.5s ease-out forwards;
+}
+
+.heart-anim-3 {
+    animation: trajectory-3 0.5s ease-out forwards;
+}
+
+.heart-anim-4 {
+    animation: trajectory-4 0.5s ease-out forwards;
+}
+
+.chat-widget {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+/* Круглая кнопка вызова */
+.chat-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #d90429;
+    color: white;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    /* Требование задачи: 100ms linear */
+    transition: transform 0.1s linear, opacity 0.1s linear;
+}
+
+/* Контейнер с формой (скрытый по умолчанию) */
+.chat-form-container {
+    width: 300px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    /* Изначально скрыто */
+    opacity: 0;
+    transform: scale(0);
+    transform-origin: bottom right;
+    pointer-events: none;
+
+    /* Требование задачи: 100ms linear */
+    transition: transform 0.1s linear, opacity 0.1s linear;
+}
+
+/* СОСТОЯНИЕ КОГДА ЧАТ ОТКРЫТ (добавляется через JS) */
+.chat-widget.active .chat-btn {
+    transform: scale(0);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.chat-widget.active .chat-form-container {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+/* Внутренний дизайн формы чата */
+.chat-header {
+    background: #d90429;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-family: sans-serif;
+}
+
+.chat-close {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.chat-form-container textarea {
+    width: 100%;
+    box-sizing: border-box;
+    height: 100px;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #eee;
+    resize: none;
+    outline: none;
+    font-family: sans-serif;
+}
+
+.chat-submit {
+    width: 100%;
+    padding: 10px;
+    background: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    color: #d90429;
+}
+
+.chat-submit:hover {
+    background: #f8f9fa;
+}

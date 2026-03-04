@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI Widgets</title>
+</head>
+
+<body>
+    <div class="container" style="padding: 50px; font-family: sans-serif;">
+
+        <div class="widget-collapse" id="collapse-widget">
+            <button class="collapse-btn"
+                style="padding: 10px 20px; cursor: pointer; background: #007bff; color: white; border: none; border-radius: 4px;">
+                Collapse
+            </button>
+
+            <div class="collapse-content-wrapper">
+                <div class="collapse-content"
+                    style="padding: 20px; border: 1px solid #ccc; margin-top: 10px; border-radius: 4px; background: #f8f9fa;">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
+                    Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                </div>
+            </div>
+        </div>
+
+        <div id="liker-widget" class="liker-widget" style="margin-top: 50px;">
+            <button class="like-btn">Like</button>
+        </div>
+
+    </div>
+
+    <div id="chat-widget" class="chat-widget">
+        <button class="chat-btn">💬</button>
+        <div class="chat-form-container">
+            <div class="chat-header">
+                Напишите нам
+                <button class="chat-close">✖</button>
+            </div>
+            <textarea placeholder="Ваше сообщение..."></textarea>
+            <button class="chat-submit">Отправить</button>
+        </div>
+    </div>
+</body>
+
+</html>
